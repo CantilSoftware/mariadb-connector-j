@@ -166,7 +166,8 @@ public class MariaDbValueObject implements ValueObject {
             case DATE:
                 if (isBinaryEncoded) {
                     try {
-                        return getDate(cal).toString();
+                        Date date = getDate(cal);
+                        return date == null ? null : date.toString();
                     } catch (ParseException e) {
                     }
                 }
@@ -174,7 +175,8 @@ public class MariaDbValueObject implements ValueObject {
             case YEAR:
                 if (options.yearIsDateType) {
                     try {
-                        return getDate(cal).toString();
+                        Date date = getDate(cal);
+                        return date == null ? null : date.toString();
                     } catch (ParseException e) {
                         //eat exception
                     }
@@ -186,7 +188,8 @@ public class MariaDbValueObject implements ValueObject {
             case TIMESTAMP:
             case DATETIME:
                 try {
-                    return getTimestamp(cal).toString();
+                    Timestamp timestamp = getTimestamp(cal);
+                    return timestamp == null ? null : timestamp.toString();
                 } catch (ParseException e) {
                 }
                 break;
