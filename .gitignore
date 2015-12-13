@@ -6,6 +6,9 @@
 # Keep empty directories: >> .gitignore/.git*
 /target/
 
+# gradle
+build/
+
 # intellij
 .idea
 *.iml

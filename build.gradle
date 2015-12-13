@@ -1,19 +1,9 @@
-repositories {
-    mavenCentral()
-}
-configurations {
-    junitAnt
-}
-dependencies {
-    junitAnt 'junit:junit:4.8.2'
-    junitAnt('org.apache.ant:ant-junit:1.9.2') {
-        transitive = false
-    }
-    junitAnt('org.apache.ant:ant-junit4:1.9.2') {
-        transitive = false
-    }
-}
-ant.taskdef(name: 'junit', classname: 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTask',
-        classpath: configurations.junitAnt.asPath)
+apply plugin: 'java'
 
-ant.importBuild('build.xml')
+dependencies {
+    compile 'net.java.dev.jna:jna:3.3.0'
+    compile 'net.java.dev.jna:jna:3.3.0:platform'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'commons-dbcp:commons-dbcp:1.4'
+}
